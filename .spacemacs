@@ -40,6 +40,7 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ;; auto-completion
      ;; better-defaults
+     chinese
      (dash :variables
            dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets")
      emacs-lisp
@@ -50,11 +51,13 @@ This function should only modify configuration layer settings."
      multiple-cursors
      org
      (ruby :variables ruby-backend 'robe)
+     ruby-on-rails
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
+     toml
      version-control
      treemacs)
 
