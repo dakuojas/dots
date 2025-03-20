@@ -1,10 +1,10 @@
 [tools]
 erlang = "latest"
 go = "latest"
-java = "latest"
-node = "latest"
-python = "latest"
-ruby = "latest"
+java = ["11","17","21"]
+node = ["latest","20","22"]
+python = ["latest","2"]
+ruby = ["latest","2"]
 rust = "latest"
 zig = "latest"
 zls = "latest"
