@@ -50,10 +50,15 @@ This function should only modify configuration layer settings."
      html
      javascript
      lsp
+     latex
      markdown
      multiple-cursors
      org
-     (ruby :variables ruby-backend 'robe)
+     (ranger :variables
+             ranger-override-dired 'ranger
+             ranger-show-preview t)
+     (ruby :variables
+           ruby-backend 'robe)
      ruby-on-rails
      (shell :variables
             shell-default-shell 'vterm
@@ -387,7 +392,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
 
    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
@@ -401,7 +406,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' to obtain fullscreen
    ;; without external boxes. Also disables the internal border. (default nil)
-   dotspacemacs-undecorated-at-startup nil
+   dotspacemacs-undecorated-at-startup t
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
