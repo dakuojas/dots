@@ -61,7 +61,7 @@ This function should only modify configuration layer settings."
            ruby-backend 'robe)
      ruby-on-rails
      (shell :variables
-            shell-default-shell 'vterm
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
@@ -72,10 +72,10 @@ This function should only modify configuration layer settings."
      version-control
      yaml
      (treemacs
-      ;; :variables
-      ;; treemacs-use-follow-mode t
-      ;; treemacs-use-filewatch-mode t
-      ;; treemacs-use-git-mode 'deferred
+      :variables
+      treemacs-use-follow-mode t
+      treemacs-use-filewatch-mode t
+      treemacs-use-git-mode 'deferred
       )
      )
 
