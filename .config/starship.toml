@@ -1,0 +1,59 @@
+format = """
+$username\
+$all\
+$time\
+$line_break\
+$character"""
+
+[directory]
+style = "bold cyan"
+
+[character]
+success_symbol = "[❯](bold purple)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[mise]
+disabled = false
+
+[nodejs]
+format = "[$symbol($version)]($style) "
+symbol = 'node '
+style = "bright-green"
+detect_files = []
+
+[package]
+disabled = true
+
+[ruby]
+format = "[$symbol($version)]($style) "
+symbol = 'ruby '
+style = "bright-red"
+
+[time]
+format = """
+[ $time]($style)"""
+style = "fg:bold yellow"
+disabled = false
+# show_always = true
+time_format = "%R"
+
+[line_break]
+disabled = false
+
+[hostname]
+ssh_only = false
+format = """
+@\
+[$hostname ]($style)\
+"""
+
+[username]
+show_always = true
+format = """
+[$user]($style)\
+"""
