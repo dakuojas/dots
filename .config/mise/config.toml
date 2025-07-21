@@ -1,8 +1,11 @@
 [tools]
+bun = "latest"
+deno = "latest"
 elixir = "latest"
 erlang = "latest"
 go = "latest"
 java = ["11","17","21"]
+node = ["latest"]
 python = ["latest","2"]
 ruby = ["latest","2"]
 rust = "latest"
