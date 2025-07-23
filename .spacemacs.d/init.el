@@ -44,12 +44,14 @@ This function should only modify configuration layer settings."
      csv
      (dash :variables
            dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets")
+     (elixir :variables
+             elixir-backend 'alchemist)
      emacs-lisp
      git
      helm
      html
      javascript
-     lsp
+     ;;lsp
      latex
      markdown
      multiple-cursors
@@ -392,7 +394,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
 
    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
@@ -635,7 +637,57 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(emmet-mode typescript-mode web-mode sql-indent sqlup-mode yaml-mode csv-mode add-node-modules-path dap-mode lsp-docker bui ggtags impatient-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode simple-httpd tern web-beautify prettier-js auto-yasnippet helm-c-yasnippet helm-company company helm-lsp lsp-origami origami lsp-treemacs lsp-ui lsp-mode yasnippet-snippets yasnippet helm-dash dash-docs zeal-at-point mu4e kotlin-mode git-commit ws-butler writeroom-mode winum which-key wgrep vundo volatile-highlights vim-powerline vi-tilde-fringe undo-fu-session undo-fu treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org terminal-here term-cursor symon symbol-overlay string-inflection string-edit-at-point spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smeargle shell-pop restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nameless multi-vterm multi-term multi-line markdown-toc macrostep lorem-ipsum link-hint inspector info+ indent-guide hybrid-mode hungry-delete htmlize holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-git-grep helm-descbinds helm-comint helm-ag google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link gh-md flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr elisp-slime-nav elisp-demos elisp-def editorconfig eat dumb-jump drag-stuff dotenv-mode disable-mouse dired-quick-sort diminish diff-hl devdocs define-word column-enforce-mode code-review clean-aindent-mode centered-cursor-mode browse-at-remote auto-highlight-symbol auto-compile all-the-icons aggressive-indent ace-link ace-jump-helm-line)))
+     '(ace-jump-helm-line ace-link add-node-modules-path aggressive-indent
+                          all-the-icons auto-compile auto-highlight-symbol
+                          auto-yasnippet browse-at-remote bui centered-cursor-mode
+                          clean-aindent-mode code-review column-enforce-mode
+                          company csv-mode dap-mode dash-docs define-word devdocs
+                          diff-hl diminish dired-quick-sort disable-mouse
+                          dotenv-mode drag-stuff dumb-jump eat editorconfig
+                          elisp-def elisp-demos elisp-slime-nav elixir-mode
+                          emmet-mode emr esh-help eshell-prompt-extras eshell-z
+                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
+                          evil-collection evil-easymotion evil-escape
+                          evil-evilified-state evil-exchange evil-goggles
+                          evil-iedit-state evil-indent-plus evil-lion
+                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                          evil-numbers evil-org evil-surround evil-textobj-line
+                          evil-tutor evil-unimpaired evil-visual-mark-mode
+                          evil-visualstar expand-region eyebrowse fancy-battery
+                          flx-ido flycheck-credo flycheck-elsa flycheck-package
+                          flycheck-pos-tip flyspell-correct-helm ggtags gh-md
+                          git-commit git-link git-messenger git-modes
+                          git-timemachine gitignore-templates gnuplot golden-ratio
+                          google-translate grizzl helm-ag helm-c-yasnippet
+                          helm-comint helm-company helm-dash helm-descbinds
+                          helm-git-grep helm-ls-git helm-lsp helm-make
+                          helm-mode-manager helm-org helm-org-rifle
+                          helm-projectile helm-purpose helm-swoop helm-themes
+                          helm-xref hide-comnt highlight-indentation
+                          highlight-numbers highlight-parentheses hl-todo
+                          holy-mode htmlize hungry-delete hybrid-mode
+                          impatient-mode import-js indent-guide info+ inspector
+                          js-doc js2-mode js2-refactor kotlin-mode link-hint
+                          livid-mode lorem-ipsum lsp-docker lsp-mode lsp-origami
+                          lsp-treemacs lsp-ui macrostep markdown-toc mu4e
+                          multi-line multi-term multi-vterm multiple-cursors
+                          nameless nodejs-repl npm-mode ob-elixir open-junk-file
+                          org-cliplink org-contrib org-download org-mime
+                          org-pomodoro org-present org-projectile org-rich-yank
+                          org-superstar orgit-forge origami overseer paradox
+                          password-generator pcre2el popwin prettier-js quickrun
+                          rainbow-delimiters request restart-emacs shell-pop
+                          simple-httpd skewer-mode smeargle space-doc spaceline
+                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
+                          sql-indent sqlup-mode string-edit-at-point
+                          string-inflection symbol-overlay symon term-cursor
+                          terminal-here tern toc-org treemacs-evil
+                          treemacs-icons-dired treemacs-magit treemacs-persp
+                          treemacs-projectile typescript-mode undo-fu
+                          undo-fu-session vi-tilde-fringe vim-powerline
+                          volatile-highlights vundo web-beautify web-mode wgrep
+                          which-key winum writeroom-mode ws-butler yaml-mode
+                          yasnippet yasnippet-snippets zeal-at-point)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
