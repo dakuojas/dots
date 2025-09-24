@@ -1,16 +1,16 @@
 [tools]
-bun = "latest"
-deno = "latest"
-elixir = "latest"
-erlang = "latest"
-go = "latest"
-java = ["11","17","21"]
+bun = ["latest"]
+deno = ["latest"]
+elixir = ["latest"]
+erlang = ["latest"]
+go = ["latest"]
+java = ["17","21","11"]
 node = ["latest"]
 python = ["3"]
 ruby = ["3"]
-rust = "latest"
-zig = "latest"
-zls = "latest"
+rust = ["latest"]
+zig = ["latest"]
+zls = ["latest"]
 
 [settings]
 idiomatic_version_file_enable_tools = []
