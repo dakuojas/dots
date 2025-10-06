@@ -38,9 +38,8 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     chinese
+     auto-completion
+     better-defaults
      csv
      (dash :variables
            dash-docs-docset-newpath "~/.local/share/Zeal/Zeal/docsets")
@@ -51,7 +50,7 @@ This function should only modify configuration layer settings."
      helm
      html
      javascript
-     ;;lsp
+     lsp
      latex
      markdown
      multiple-cursors
@@ -73,12 +72,10 @@ This function should only modify configuration layer settings."
      typescript
      version-control
      yaml
-     (treemacs
-      :variables
-      treemacs-use-follow-mode t
-      treemacs-use-filewatch-mode t
-      treemacs-use-git-mode 'deferred
-      )
+     (treemacs :variables
+               treemacs-use-follow-mode t
+               treemacs-use-filewatch-mode t
+               treemacs-use-git-mode 'deferred)
      )
 
 
@@ -481,7 +478,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
 
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `ack' and `grep'.
@@ -638,10 +635,10 @@ This function is called at the very end of Spacemacs initialization."
                           highlight-numbers highlight-parentheses hl-todo
                           holy-mode htmlize hungry-delete hybrid-mode
                           impatient-mode import-js indent-guide info+ inspector
-                          js-doc js2-mode js2-refactor kotlin-mode link-hint
-                          livid-mode lorem-ipsum lsp-docker lsp-mode lsp-origami
-                          lsp-treemacs lsp-ui macrostep markdown-toc mu4e
-                          multi-line multi-term multi-vterm multiple-cursors
+                          journalctl-mode js-doc js2-mode js2-refactor kotlin-mode
+                          link-hint livid-mode lorem-ipsum lsp-docker lsp-mode
+                          lsp-origami lsp-treemacs lsp-ui macrostep markdown-toc
+                          mu4e multi-line multi-term multi-vterm multiple-cursors
                           nameless nodejs-repl npm-mode ob-elixir open-junk-file
                           org-cliplink org-contrib org-download org-mime
                           org-pomodoro org-present org-projectile org-rich-yank
@@ -651,8 +648,8 @@ This function is called at the very end of Spacemacs initialization."
                           simple-httpd skewer-mode smeargle space-doc spaceline
                           spacemacs-purpose-popwin spacemacs-whitespace-cleanup
                           sql-indent sqlup-mode string-edit-at-point
-                          string-inflection symbol-overlay symon term-cursor
-                          terminal-here tern toc-org treemacs-evil
+                          string-inflection symbol-overlay symon systemd
+                          term-cursor terminal-here tern toc-org treemacs-evil
                           treemacs-icons-dired treemacs-magit treemacs-persp
                           treemacs-projectile typescript-mode undo-fu
                           undo-fu-session vi-tilde-fringe vim-powerline
