@@ -46,7 +46,10 @@ This function should only modify configuration layer settings."
      (elixir :variables
              elixir-backend 'alchemist)
      emacs-lisp
-     git
+     (git :variables
+          git-enable-magit-delta-plugin t
+          git-enable-magit-gitflow-plugin t
+          git-enable-magit-todos-plugin t)
      helm
      html
      javascript
