@@ -52,12 +52,12 @@ This function should only modify configuration layer settings."
           git-enable-magit-todos-plugin t)
      helm
      html
-     javascript
      lsp
-     latex
      markdown
      multiple-cursors
-     org
+     (org :variables
+          org-enable-reveal-js-support t
+          org-enable-transclusion-support t)
      (ranger :variables
              ranger-override-dired 'ranger
              ranger-show-preview t)
@@ -351,6 +351,14 @@ It should only modify the values of Spacemacs settings."
    ;; displayed in the current window. (default nil)
    dotspacemacs-switch-to-buffer-prefers-purpose nil
 
+   ;; Make consecutive tab key presses after commands such as
+   ;; `spacemacs/alternate-buffer' (SPC TAB) cycle through previous
+   ;; buffers/windows/etc. Please see the option's docstring for more information.
+   ;; Set the option to t in order to enable cycling for all current and
+   ;; future cycling commands. Alternatively, choose a subset of the currently
+   ;; supported commands: '(alternate-buffer alternate-window). (default nil)
+   dotspacemacs-enable-cycling nil
+
    ;; Whether side windows (such as those created by treemacs or neotree)
    ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
    ;; (default t)
@@ -489,11 +497,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; The backend used for undo/redo functionality. Possible values are
-   ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
+   ;; `undo-redo', `undo-fu' and `undo-tree' see also `evil-undo-system'.
    ;; Note that saved undo history does not get transferred when changing
-   ;; your undo system. The default is currently `undo-fu' as `undo-tree'
-   ;; is not maintained anymore and `undo-redo' is very basic."
-   dotspacemacs-undo-system 'undo-fu
+   ;; your undo system from or to undo-tree. (default `undo-redo')
+   dotspacemacs-undo-system 'undo-redo
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -612,53 +619,56 @@ This function is called at the very end of Spacemacs initialization."
                           all-the-icons auto-compile auto-highlight-symbol
                           auto-yasnippet browse-at-remote bui centered-cursor-mode
                           clean-aindent-mode code-review column-enforce-mode
-                          company csv-mode dap-mode dash-docs define-word devdocs
-                          diff-hl diminish dired-quick-sort disable-mouse
-                          dotenv-mode drag-stuff dumb-jump eat editorconfig
-                          elisp-def elisp-demos elisp-slime-nav elixir-mode
-                          emmet-mode emr esh-help eshell-prompt-extras eshell-z
-                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
-                          evil-collection evil-easymotion evil-escape
-                          evil-evilified-state evil-exchange evil-goggles
-                          evil-iedit-state evil-indent-plus evil-lion
-                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-                          evil-numbers evil-org evil-surround evil-textobj-line
-                          evil-tutor evil-unimpaired evil-visual-mark-mode
-                          evil-visualstar expand-region eyebrowse fancy-battery
-                          flx-ido flycheck-credo flycheck-elsa flycheck-package
+                          company company-web counsel counsel-css csv-mode
+                          dap-mode dash-docs define-word devdocs diff-hl diminish
+                          dired-quick-sort disable-mouse dotenv-mode drag-stuff
+                          dumb-jump eat editorconfig elisp-def elisp-demos
+                          elisp-slime-nav elixir-mode emmet-mode emr esh-help
+                          eshell-prompt-extras eshell-z eval-sexp-fu evil-anzu
+                          evil-args evil-cleverparens evil-collection
+                          evil-easymotion evil-escape evil-evilified-state
+                          evil-exchange evil-goggles evil-iedit-state
+                          evil-indent-plus evil-lion evil-lisp-state evil-matchit
+                          evil-mc evil-nerd-commenter evil-numbers evil-org
+                          evil-surround evil-textobj-line evil-tutor
+                          evil-unimpaired evil-visual-mark-mode evil-visualstar
+                          expand-region eyebrowse fancy-battery flx-ido
+                          flycheck-credo flycheck-elsa flycheck-package
                           flycheck-pos-tip flyspell-correct-helm ggtags gh-md
                           git-commit git-link git-messenger git-modes
                           git-timemachine gitignore-templates gnuplot golden-ratio
-                          google-translate grizzl helm-ag helm-c-yasnippet
-                          helm-comint helm-company helm-dash helm-descbinds
-                          helm-git-grep helm-ls-git helm-lsp helm-make
-                          helm-mode-manager helm-org helm-org-rifle
-                          helm-projectile helm-purpose helm-swoop helm-themes
-                          helm-xref hide-comnt highlight-indentation
+                          google-translate grizzl haml-mode helm-ag
+                          helm-c-yasnippet helm-comint helm-company helm-css-scss
+                          helm-dash helm-descbinds helm-git-grep helm-ls-git
+                          helm-lsp helm-make helm-mode-manager helm-org
+                          helm-org-rifle helm-projectile helm-purpose helm-swoop
+                          helm-themes helm-xref hide-comnt highlight-indentation
                           highlight-numbers highlight-parentheses hl-todo
                           holy-mode htmlize hungry-delete hybrid-mode
                           impatient-mode import-js indent-guide info+ inspector
-                          journalctl-mode js-doc js2-mode js2-refactor kotlin-mode
-                          link-hint livid-mode lorem-ipsum lsp-docker lsp-mode
-                          lsp-origami lsp-treemacs lsp-ui macrostep markdown-toc
-                          mu4e multi-line multi-term multi-vterm multiple-cursors
-                          nameless nodejs-repl npm-mode ob-elixir open-junk-file
-                          org-cliplink org-contrib org-download org-mime
-                          org-pomodoro org-present org-projectile org-rich-yank
-                          org-superstar orgit-forge origami overseer paradox
-                          password-generator pcre2el popwin prettier-js quickrun
-                          rainbow-delimiters request restart-emacs shell-pop
-                          simple-httpd skewer-mode smeargle space-doc spaceline
+                          ivy journalctl-mode js-doc js2-mode js2-refactor
+                          kotlin-mode link-hint livid-mode lorem-ipsum lsp-docker
+                          lsp-mode lsp-origami lsp-treemacs lsp-ui macrostep
+                          markdown-toc mu4e multi-line multi-term multi-vterm
+                          multiple-cursors nameless nodejs-repl npm-mode ob-elixir
+                          open-junk-file org-cliplink org-contrib org-download
+                          org-mime org-pomodoro org-present org-projectile
+                          org-rich-yank org-superstar orgit-forge origami overseer
+                          paradox password-generator pcre2el popwin prettier-js
+                          pug-mode quickrun rainbow-delimiters request
+                          restart-emacs sass-mode scss-mode shell-pop simple-httpd
+                          skewer-mode slim-mode smeargle space-doc spaceline
                           spacemacs-purpose-popwin spacemacs-whitespace-cleanup
                           sql-indent sqlup-mode string-edit-at-point
-                          string-inflection symbol-overlay symon systemd
-                          term-cursor terminal-here tern toc-org treemacs-evil
-                          treemacs-icons-dired treemacs-magit treemacs-persp
-                          treemacs-projectile typescript-mode undo-fu
-                          undo-fu-session vi-tilde-fringe vim-powerline
-                          volatile-highlights vundo web-beautify web-mode wgrep
-                          which-key winum writeroom-mode ws-butler yaml-mode
-                          yasnippet yasnippet-snippets zeal-at-point)))
+                          string-inflection swiper symbol-overlay symon systemd
+                          tagedit term-cursor terminal-here tern toc-org
+                          treemacs-evil treemacs-icons-dired treemacs-magit
+                          treemacs-persp treemacs-projectile typescript-mode
+                          undo-fu undo-fu-session vi-tilde-fringe vim-powerline
+                          volatile-highlights vundo web-beautify
+                          web-completion-data web-mode wgrep which-key winum
+                          writeroom-mode ws-butler yaml-mode yasnippet
+                          yasnippet-snippets zeal-at-point)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
