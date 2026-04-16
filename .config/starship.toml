@@ -5,6 +5,11 @@ $time\
 $line_break\
 $character"""
 
+[aws]
+format = 'on [$symbol($profile)(\($region\) )]($style)'
+style = 'bold blue'
+symbol = '🅰 '
+
 [directory]
 style = "bold cyan"
 
