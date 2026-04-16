@@ -58,6 +58,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-reveal-js-support t
           org-enable-transclusion-support t)
+     python
      (ranger :variables
              ranger-override-dired 'ranger
              ranger-show-preview t)
@@ -72,6 +73,10 @@ This function should only modify configuration layer settings."
      sql
      syntax-checking
      toml
+     (tree-sitter :variables
+                  tree-sitter-syntax-highlight-enable t
+                  tree-sitter-fold-enable t
+                  tree-sitter-fold-indicators-enable t)
      typescript
      version-control
      yaml
@@ -616,59 +621,66 @@ This function is called at the very end of Spacemacs initialization."
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
      '(ace-jump-helm-line ace-link add-node-modules-path aggressive-indent
-                          all-the-icons auto-compile auto-highlight-symbol
-                          auto-yasnippet browse-at-remote bui centered-cursor-mode
-                          clean-aindent-mode code-review column-enforce-mode
-                          company company-web counsel counsel-css csv-mode
-                          dap-mode dash-docs define-word devdocs diff-hl diminish
-                          dired-quick-sort disable-mouse dotenv-mode drag-stuff
-                          dumb-jump eat editorconfig elisp-def elisp-demos
-                          elisp-slime-nav elixir-mode emmet-mode emr esh-help
-                          eshell-prompt-extras eshell-z eval-sexp-fu evil-anzu
-                          evil-args evil-cleverparens evil-collection
-                          evil-easymotion evil-escape evil-evilified-state
-                          evil-exchange evil-goggles evil-iedit-state
-                          evil-indent-plus evil-lion evil-lisp-state evil-matchit
-                          evil-mc evil-nerd-commenter evil-numbers evil-org
-                          evil-surround evil-textobj-line evil-tutor
-                          evil-unimpaired evil-visual-mark-mode evil-visualstar
-                          expand-region eyebrowse fancy-battery flx-ido
-                          flycheck-credo flycheck-elsa flycheck-package
+                          all-the-icons anaconda-mode auto-compile
+                          auto-highlight-symbol auto-yasnippet blacken
+                          browse-at-remote bui centered-cursor-mode
+                          clean-aindent-mode code-cells code-review
+                          column-enforce-mode company company-anaconda company-web
+                          concurrent counsel counsel-css csv-mode ctable
+                          cython-mode dap-mode dash-docs define-word devdocs
+                          diff-hl diminish dired-quick-sort disable-mouse
+                          dotenv-mode drag-stuff dumb-jump eat editorconfig
+                          elisp-def elisp-demos elisp-slime-nav elixir-mode
+                          emmet-mode emr epc esh-help eshell-prompt-extras
+                          eshell-z eval-sexp-fu evil-anzu evil-args
+                          evil-cleverparens evil-collection evil-easymotion
+                          evil-escape evil-evilified-state evil-exchange
+                          evil-goggles evil-iedit-state evil-indent-plus evil-lion
+                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                          evil-numbers evil-org evil-surround evil-textobj-line
+                          evil-tutor evil-unimpaired evil-visual-mark-mode
+                          evil-visualstar expand-region eyebrowse fancy-battery
+                          flx-ido flycheck-credo flycheck-elsa flycheck-package
                           flycheck-pos-tip flyspell-correct-helm ggtags gh-md
                           git-commit git-link git-messenger git-modes
                           git-timemachine gitignore-templates gnuplot golden-ratio
                           google-translate grizzl haml-mode helm-ag
-                          helm-c-yasnippet helm-comint helm-company helm-css-scss
-                          helm-dash helm-descbinds helm-git-grep helm-ls-git
-                          helm-lsp helm-make helm-mode-manager helm-org
-                          helm-org-rifle helm-projectile helm-purpose helm-swoop
-                          helm-themes helm-xref hide-comnt highlight-indentation
-                          highlight-numbers highlight-parentheses hl-todo
-                          holy-mode htmlize hungry-delete hybrid-mode
-                          impatient-mode import-js indent-guide info+ inspector
-                          ivy journalctl-mode js-doc js2-mode js2-refactor
-                          kotlin-mode link-hint livid-mode lorem-ipsum lsp-docker
-                          lsp-mode lsp-origami lsp-treemacs lsp-ui macrostep
-                          markdown-toc mu4e multi-line multi-term multi-vterm
-                          multiple-cursors nameless nodejs-repl npm-mode ob-elixir
+                          helm-c-yasnippet helm-comint helm-company helm-cscope
+                          helm-css-scss helm-dash helm-descbinds helm-git-grep
+                          helm-ls-git helm-lsp helm-make helm-mode-manager
+                          helm-org helm-org-rifle helm-projectile helm-purpose
+                          helm-pydoc helm-swoop helm-themes helm-xref hide-comnt
+                          highlight-indentation highlight-numbers
+                          highlight-parentheses hl-todo holy-mode htmlize
+                          hungry-delete hybrid-mode impatient-mode import-js
+                          importmagic indent-guide info+ inspector ivy
+                          journalctl-mode js-doc js2-mode js2-refactor kotlin-mode
+                          link-hint live-py-mode livid-mode load-env-vars
+                          lorem-ipsum lsp-docker lsp-mode lsp-origami lsp-pyright
+                          lsp-treemacs lsp-ui macrostep markdown-toc mu4e
+                          multi-line multi-term multi-vterm multiple-cursors
+                          nameless nodejs-repl nose npm-mode ob-elixir
                           open-junk-file org-cliplink org-contrib org-download
                           org-mime org-pomodoro org-present org-projectile
                           org-rich-yank org-superstar orgit-forge origami overseer
-                          paradox password-generator pcre2el popwin prettier-js
-                          pug-mode quickrun rainbow-delimiters request
-                          restart-emacs sass-mode scss-mode shell-pop simple-httpd
-                          skewer-mode slim-mode smeargle space-doc spaceline
-                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
-                          sql-indent sqlup-mode string-edit-at-point
-                          string-inflection swiper symbol-overlay symon systemd
-                          tagedit term-cursor terminal-here tern toc-org
-                          treemacs-evil treemacs-icons-dired treemacs-magit
-                          treemacs-persp treemacs-projectile typescript-mode
-                          undo-fu undo-fu-session vi-tilde-fringe vim-powerline
+                          paradox password-generator pcre2el pet pip-requirements
+                          pipenv pippel poetry popwin prettier-js pug-mode
+                          py-isort pydoc pyenv-mode pylookup python-pytest
+                          pythonic pyvenv quickrun rainbow-delimiters reformatter
+                          request restart-emacs ruff-format sass-mode scss-mode
+                          shell-pop simple-httpd skewer-mode slim-mode smeargle
+                          space-doc spaceline spacemacs-purpose-popwin
+                          spacemacs-whitespace-cleanup sphinx-doc sql-indent
+                          sqlup-mode string-edit-at-point string-inflection swiper
+                          symbol-overlay symon systemd tagedit term-cursor
+                          terminal-here tern toc-org treemacs-evil
+                          treemacs-icons-dired treemacs-magit treemacs-persp
+                          treemacs-projectile typescript-mode undo-fu
+                          undo-fu-session uv vi-tilde-fringe vim-powerline
                           volatile-highlights vundo web-beautify
                           web-completion-data web-mode wgrep which-key winum
-                          writeroom-mode ws-butler yaml-mode yasnippet
-                          yasnippet-snippets zeal-at-point)))
+                          writeroom-mode ws-butler xcscope yaml-mode yapfify
+                          yasnippet yasnippet-snippets zeal-at-point)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
