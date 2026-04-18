@@ -2,13 +2,14 @@
 bun = ["latest"]
 deno = ["latest"]
 elixir = ["latest"]
-erlang = ["latest"]
+erlang = ["latest","28","27"]
 go = ["latest"]
-java = ["17","21","11","liberica-8u472+11"]
-node = ["latest","24","22","18"]
+java = ["latest","21", "17", "11", "temurin-8"]
+node = ["latest","24","22","20","18"]
 python = ["3"]
 ruby = ["latest","3.3.5","3.4"]
 rust = ["latest"]
+usage = "latest"
 zig = ["latest"]
 zls = ["latest"]
 
