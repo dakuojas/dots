@@ -3,7 +3,7 @@ elixir = ["latest"]
 erlang = ["29","28","27"]
 go = ["latest"]
 java = ["25","21", "17", "11", "temurin-8"]
-node = ["26","24","22","20","18"]
+node = ["22","26","24","20","18"]
 python = ["3"]
 ruby = ["4","3"]
 rust = ["latest"]
@@ -12,3 +12,6 @@ zig = ["latest"]
 
 [settings]
 idiomatic_version_file_enable_tools = []
+
+[settings.ruby]
+compile = false
