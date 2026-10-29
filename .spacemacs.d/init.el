@@ -52,6 +52,7 @@ This function should only modify configuration layer settings."
           git-enable-magit-todos-plugin t)
      helm
      html
+     latex
      lsp
      markdown
      multiple-cursors
@@ -400,7 +401,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default t) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' to obtain fullscreen
@@ -449,15 +450,15 @@ It should only modify the values of Spacemacs settings."
    ;; but only visual lines are counted. For example, folded lines will not be
    ;; counted and wrapped lines are counted as multiple lines.
    ;; This variable can also be set to a property list for finer control:
-   ;; '(:relative nil
-   ;;   :visual nil
-   ;;   :disabled-for-modes dired-mode
-   ;;                       doc-view-mode
-   ;;                       markdown-mode
-   ;;                       org-mode
-   ;;                       pdf-view-mode
-   ;;                       text-mode
-   ;;   :size-limit-kb 1000)
+   '(:relative nil
+               :visual nil
+               :disabled-for-modes dired-mode
+               doc-view-mode
+               markdown-mode
+               org-mode
+               pdf-view-mode
+               text-mode
+               :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers nil
@@ -489,7 +490,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
